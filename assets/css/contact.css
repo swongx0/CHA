@@ -1,0 +1,542 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oi&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  --first-color: #661918;
+  --black-color: #110E0F;
+  --white-color: #E7E0D5;
+  --text-color: #110E0F;
+  --title-color: #110E0F;
+  --body-color: #E7E0D5;
+  --shadow-img: drop-shadow(0 16px 24px hsla(0, 0%, 0%, .2));
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --logo-font: "Oi";
+  --body-font: "Montserrat", sans-serif;
+  --biggest-font-size: 5rem;
+  --bigger-font-size: 2.5rem;
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 6rem;
+    --bigger-font-size: 4.5rem;
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--black-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+  font-family: var(--body-font);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 1rem;
+}
+
+.section__title, 
+.section__subtitle {
+  text-align: center;
+  font-family: var(--body-font);
+}
+
+.section__title {
+  font-size: var(--big-font-size);
+  margin-bottom: 1rem;
+}
+
+.section__subtitle {
+  display: block;
+  font-size: var(--h2-font-size);
+  margin-bottom: .25rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+/*=============== HEADER & NAV ===============*/
+
+.nav__menu {
+  background-color: var(--first-color);
+  height: 100vh;
+  width: 100vw;
+  right: 0%;
+  position: fixed;
+  top: 0;
+  transition: right .4s;
+  z-index: 2;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 100vh;
+}
+
+.nav__list li > a {
+  font-size: var(--big-font-size);
+  color: var(--body-color);
+  padding: 2rem;
+}
+
+.menu__icon, .menu__close {
+  color: var(--body-color);
+  font-size: var(--h1-font-size);
+  padding: 1rem 0;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  cursor: pointer;
+  z-index: var(--z-fixed);
+}
+
+.menu__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  display: none
+}
+
+.show-close {
+  display: block;
+}
+
+.hide-menu-icon {
+  display: none;
+}
+
+.show-menu {
+  right: 0;
+}
+
+/*=============== CONTACT ===============*/
+.contact__container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact__title > h1 {
+  font-size: var(--bigger-font-size);
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact__info {
+  background-color: var(--first-color);
+  padding: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.contact__info-left,
+.contact__info-right {
+  margin-bottom: 2rem;
+}
+
+.contact__info-left > h3,
+.contact__info-right > h3 {
+  color: var(--body-color);
+  border-top: 3px solid var(--body-color);
+  font-weight: var(--font-semi-bold);
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact__info-left > p,
+.contact__info-right > p {
+  color: var(--body-color);
+}
+
+.contact__image {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem 0;
+}
+
+/* Media query for tablet devices */
+@media screen and (min-width: 768px) {
+  .contact__container {
+    padding: 3rem;
+  }
+
+  .contact__title > h1 {
+    font-size: calc(var(--bigger-font-size) * 1.5);
+  }
+
+  .contact__info {
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contact__info-left,
+  .contact__info-right {
+    width: 45%;
+    margin-bottom: 0;
+  }
+
+  .contact__image {
+    max-width: 500px;
+  }
+}
+
+/* Media query for desktop */
+@media screen and (min-width: 1150px) {
+  .contact__container {
+    padding: 8rem;
+    min-height: 1000px;
+    position: relative;
+  }
+
+  .contact__title > h1 {
+    font-size: 210px;
+    filter: blur(2px);
+  }
+
+  .contact__info {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 900px;
+    padding: 5rem;
+    height: 580px;
+    top: 300px;
+    right: 250px;
+    margin-top: 0;
+  }
+
+  .contact__info-left > h3,
+  .contact__info-right > h3 {
+    width: 200px;
+    padding: 1rem 0;
+  }
+
+  .contact__info-left > p,
+  .contact__info-right > p {
+    padding: 0 0 5rem 0;
+  }
+
+  .contact__info-left {
+    width: 39%;
+  }
+
+  .contact__info-right {
+    width: 39%;
+  }
+
+  .contact__image {
+    position: absolute;
+    width: 500px;
+    display: flex;
+    top: 280px;
+    left: 350px;
+    margin: 0;
+  }
+}
+
+/*=============== FOOTER ===============*/
+.footer__container {
+  background-color: var(--first-color);
+  padding: 2rem;
+}
+
+.footer__data {
+  display: grid;
+  justify-content: center;
+}
+
+.footer__logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer__logo h2{
+  padding: 0;
+  color: var(--body-color);
+  font-size: var(--bigger-font-size);
+  font-family: var(--logo-font);
+  font-weight: var(--font-regular);
+  text-align: center;
+}
+
+.footer__social-links {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0 0 1rem 0;
+}
+
+.footer__social-links a {
+  color: var(--body-color);
+}
+
+.menu__links {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.menu__links a{
+  color: var(--body-color);
+  text-align: center;
+}
+
+.menu__links ul > li{
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer__copy {
+  padding: 1rem 0;
+  text-align: center;
+  color: var(--body-color);
+  font-size: 0.75rem;
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+@media screen and (min-width: 1150px) {
+  .menu__icon,
+  .nav__close {
+    display: none;
+  }
+
+  /* Nav container */
+  .nav {
+    display: flex;
+    justify-content: space-between; /* logo left, menu right */
+    align-items: center; /* ✅ vertical centering */
+    height: var(--header-height);
+    padding: 0 2rem; /* add some horizontal breathing room */
+    position: fixed;
+    z-index: var(--z-fixed);
+  }
+
+  .nav__logo {
+    height: 60px;
+  }
+
+  /* Logo */
+  .nav__logo > h1 {
+    font-size: var(--bigger-font-size);
+    color: var(--first-color);
+    font-family: var(--logo-font);
+    font-weight: var(--font-regular);
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    height: 60px;
+  }
+
+  /* Menu wrapper */
+  .nav__menu {
+    display: flex;
+    background: transparent;
+    justify-content: space-between;
+    padding: 5rem;
+    height: 100px;
+    align-items: center;
+  }
+
+  /* Menu list container */
+  .nav__menu__list {
+    display: flex;
+  }
+
+  /* List itself */
+  .nav__list {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem; /* adjust spacing between links */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    height: 100px;
+  }
+
+  .nav__list li > a {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-semi-bold);
+    color: var(--black-color);
+    text-decoration: none;
+  }
+
+  .contact__container {
+    padding: 8rem;
+    min-height: 1000px;
+    position: relative;
+  }
+  
+  .contact__title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact__title > h1 {
+    font-size: 210px;
+    text-transform: uppercase;
+    font-weight: var(--font-bold);
+    filter: blur(2px);
+  }
+
+  .contact__info {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--first-color);
+    width: 900px;
+    padding: 5rem;
+    height: 580px;
+    top: 300px;
+    right: 250px;
+  }
+
+  .contact__info-left > h3,
+  .contact__info-right > h3 {
+    width: 200px;
+    padding: 1rem 0;
+  }
+
+  .contact__info-left > p,
+  .contact__info-right > p {
+    padding: 0 0 5rem 0;
+  }
+
+  .contact__info-left {
+    width: 39%;
+  }
+
+  .contact__info-right {
+    width: 39%;
+  }
+
+  .contact__image {
+    position: absolute;
+    width: 500px;
+    display: flex;
+    top: 280px;
+    left: 350px;
+  }
+
+  .footer__container {
+    padding: 2rem 6rem;
+  }
+
+  .footer__data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .menu__links{
+    gap: 8rem;
+  }
+}

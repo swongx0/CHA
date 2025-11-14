@@ -1,0 +1,435 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oi&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  --first-color: #661918;
+  --black-color: #110E0F;
+  --white-color: #E7E0D5;
+  --text-color: #110E0F;
+  --title-color: #110E0F;
+  --body-color: #E7E0D5;
+  --shadow-img: drop-shadow(0 16px 24px hsla(0, 0%, 0%, .2));
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --logo-font: "Oi";
+  --body-font: "Montserrat", sans-serif;
+  --biggest-font-size: 5rem;
+  --bigger-font-size: 2.5rem;
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 6rem;
+    --bigger-font-size: 4.5rem;
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--black-color);
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+  font-family: var(--body-font);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 1rem;
+}
+
+.section__title, 
+.section__subtitle {
+  text-align: center;
+  font-family: var(--body-font);
+}
+
+.section__title {
+  font-size: var(--big-font-size);
+  margin-bottom: 1rem;
+}
+
+.section__subtitle {
+  display: block;
+  font-size: var(--h2-font-size);
+  margin-bottom: .25rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+/*=============== HEADER & NAV ===============*/
+
+.nav__menu {
+  background-color: var(--first-color);
+  height: 100vh;
+  width: 100vw;
+  right: 0%;
+  position: fixed;
+  top: 0;
+  transition: right .4s;
+  z-index: 2;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 100vh;
+}
+
+.nav__list li > a {
+  font-size: var(--big-font-size);
+  color: var(--body-color);
+  padding: 2rem;
+}
+
+.menu__icon, .menu__close {
+  color: var(--body-color);
+  font-size: var(--h1-font-size);
+  padding: 1rem 0;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  cursor: pointer;
+  z-index: var(--z-fixed);
+}
+
+.menu__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  display: none
+}
+
+.show-close {
+  display: block;
+}
+
+.hide-menu-icon {
+  display: none;
+}
+
+.show-menu {
+  right: 0;
+}
+
+/*=============== MENU DESCRIPTION ===============*/
+.menu__description {
+    padding: 8rem;
+}
+
+.menu__content > h2 {
+    color: var(--body-color);
+    font-size: var(--big-font-size);
+    padding: 2rem 0;
+}
+
+.menu__content > p {
+    color: var(--body-color);
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-regular);
+}
+
+.menu__options {
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media screen and (min-width: 1150px) {
+  .menu__icon,
+  .nav__close {
+    display: none;
+  }
+
+  /* Nav container */
+  .nav {
+    display: flex;
+    justify-content: space-between; /* logo left, menu right */
+    align-items: center; /* ✅ vertical centering */
+    height: var(--header-height);
+    padding: 0 2rem; /* add some horizontal breathing room */
+    position: fixed;
+    z-index: var(--z-fixed);
+  }
+
+  .nav__logo {
+    height: 60px;
+  }
+
+  /* Logo */
+  .nav__logo > h1 {
+    font-size: var(--bigger-font-size);
+    color: var(--first-color);
+    font-family: var(--logo-font);
+    font-weight: var(--font-regular);
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    height: 60px;
+  }
+
+  /* Menu wrapper */
+  .nav__menu {
+    display: flex;
+    background: transparent;
+    justify-content: space-between;
+    padding: 5rem;
+    height: 100px;
+    align-items: center;
+  }
+
+  /* Menu list container */
+  .nav__menu__list {
+    display: flex;
+  }
+
+  /* List itself */
+  .nav__list {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem; /* adjust spacing between links */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    height: 100px;
+  }
+
+  .nav__list li > a {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-semi-bold);
+    color: var(--body-color);
+    text-decoration: none;
+  }
+
+  .menu__container {
+    display: flex;
+    width: 100%;
+  }
+
+  .menu__images {
+    background-color: var(--body-color);
+    width: 50%;
+    height: 100vh;
+  }
+
+  .menu__option-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .menu__option-item.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu__option-item.menu__brown-sugar {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu__description {
+    background-color: var(--first-color);
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 4rem);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    padding: 5rem;
+  }
+
+  .menu__content.active {
+    opacity: 1;
+  }
+
+  .menu__content.content-0 {
+    opacity: 1;
+  }
+
+  .menu__content > h2 {
+    color: var(--body-color);
+    font-size: var(--big-font-size);
+    padding: 2rem 0;
+    transform: translateY(30px);
+    transition: transform 0.8s ease 0.2s;
+  }
+
+  .menu__content.active > h2 {
+    transform: translateY(0);
+  }
+
+  .menu__content > p {
+    color: var(--body-color);
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-regular);
+    transform: translateY(30px);
+    transition: transform 0.8s ease 0.4s;
+  }
+
+  .menu__content.active > p {
+    transform: translateY(0);
+  }
+
+  .menu__images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu__img-1 {
+    z-index: 0;
+    width: 620px;
+  }
+
+  .menu__img-2 {
+    z-index: 0;
+    width: 400px;
+  }
+
+
+  .circle__background {
+    background-color: var(--first-color);
+    height: 500px;
+    width: 500px;
+    border-radius: 500px;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+
+  .menu__img-ingredient-1 {
+    position: absolute;
+    width: 260px;
+    top: 62%;
+    left: 22%;
+  }
+
+  .menu__img-ingredient-2 {
+    position: absolute;
+    width: 260px;
+    top: 58%;
+    left: 50%;
+    transform: rotate(20deg);
+  }
+
+  .menu__img-ingredient-3 {
+    position: absolute;
+    width: 430px;
+    top: 54%;
+    left: 10%;
+    transform: rotate(-128deg);
+  }
+
+  .menu__img-ingredient-4 {
+    position: absolute;
+    width: 350px;
+    top: 49%;
+    left: 45%;
+    /* transform: rotate(-128deg); */
+  }
+}
